@@ -5,7 +5,8 @@ import os
 
 input_files = os.listdir("../inputs")
 
-def best_toppings(persons, threshold):
+
+def topping_scores(persons):
     scores = dict()
 
     for person in persons:
@@ -21,6 +22,11 @@ def best_toppings(persons, threshold):
                 scores[dislike] -= 1
             else:
                 scores[dislike] = -1
+    return scores
+
+
+def best_toppings(persons, threshold):
+    scores = topping_scores(persons)
 
     ingredients = [ingredient for ingredient, score in scores.items() if score > threshold]
     return ingredients
