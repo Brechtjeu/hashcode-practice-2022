@@ -22,4 +22,4 @@ class Person():
 
 
     def __repr__(self) -> str:
-        return f"Person who\r\n    likes: {self.likes}\r\n   dislikes: {self.dislikes}\r\n"
+        return f"Person ({len(self.likes)},{len(self.dislikes)})"
