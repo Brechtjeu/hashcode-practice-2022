@@ -3,3 +3,4 @@ def get_score(ingredients, persons):
     for person in persons:
         if person.would_eat_this_pizza(ingredients):
             score += 1
+    return score

@@ -1,4 +1,5 @@
 from parse import parse_input
+from score import get_score
 
 if __name__ == '__main__':
 
@@ -23,4 +24,5 @@ if __name__ == '__main__':
 
     ingredients = [ingredient for ingredient, score in scores.items() if score > 0]
     print(ingredients)
+    print(get_score(ingredients, persons))
 

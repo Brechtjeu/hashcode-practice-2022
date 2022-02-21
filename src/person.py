@@ -12,13 +12,13 @@ class Person():
         if len(self.likes) > len(ingredients):
             return False
         else:
-            return all(ingredient in self.likes for ingredient in ingredients)
+            return all(ingredient in ingredients for ingredient in self.likes)
     
     def __has_no_dislikes(self, ingredients):
         if len(self.dislikes) > len(ingredients):
-            return any(elem in self.dislikes  for elem in ingredients)
+            return not any(elem in self.dislikes  for elem in ingredients)
         else:
-            return any(elem in ingredients for elem in self.dislikes)
+            return not any(elem in ingredients for elem in self.dislikes)
 
 
     def __repr__(self) -> str:
