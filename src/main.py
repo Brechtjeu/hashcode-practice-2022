@@ -15,11 +15,11 @@ if __name__ == '__main__':
             else:
                 scores[like] = 1
             
-        for like in person.likes:
-            if like in scores:
-                scores[like] -= 1
+        for dislike in person.dislikes:
+            if dislike in scores:
+                scores[dislike] -= 1
             else:
-                scores[like] = -1
+                scores[dislike] = -1
 
     ingredients = [ingredient for ingredient, score in scores.items() if score > 0]
     print(ingredients)
