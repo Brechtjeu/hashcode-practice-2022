@@ -1,3 +1,2 @@
 outputs/src.zip
-src/__pycache__/parse.cpython-38.pyc
-src/__pycache__/person.cpython-38.pyc
+__pycache__/
