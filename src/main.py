@@ -6,14 +6,7 @@ import os
 input_files = os.listdir("../inputs")
 
 
-
-if __name__ == '__main__':
-
-    input_filename = input_files[4]
-
-    persons = parse_input(f'../inputs/{input_filename}')
-    print(persons)
-
+def topping_scores(persons):
     scores = dict()
 
     for person in persons:
@@ -23,15 +16,32 @@ if __name__ == '__main__':
                 scores[like] += 1
             else:
                 scores[like] = 1
-            
+
         for dislike in person.dislikes:
             if dislike in scores:
                 scores[dislike] -= 1
             else:
                 scores[dislike] = -1
+    return scores
 
-    ingredients = [ingredient for ingredient, score in scores.items() if score > 0]
-    print(ingredients)
-    print(get_score(ingredients, persons))
-    write_output(ingredients, input_filename)
+
+def best_toppings(persons, threshold):
+    scores = topping_scores(persons)
+
+    ingredients = [ingredient for ingredient, score in scores.items() if score > threshold]
+    return ingredients
+
+
+if __name__ == '__main__':
+
+    input_filename = input_files[4]
+
+    persons = parse_input(f'../inputs/{input_filename}')
+
+    print('nb persons: ', len(persons))
+
+    ingredients = best_toppings(persons, -1)
+
+    print('nb ingredients: ', len(ingredients))
+    print('score: ', get_score(ingredients, persons))
 
