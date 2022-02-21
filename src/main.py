@@ -1,9 +1,17 @@
 from parse import parse_input
 from score import get_score
+from output import write_output
+import os
+
+input_files = os.listdir("../inputs")
+
+
 
 if __name__ == '__main__':
 
-    persons = parse_input('../inputs/a_an_example.in.txt')
+    input_filename = input_files[4]
+
+    persons = parse_input(f'../inputs/{input_filename}')
     print(persons)
 
     scores = dict()
@@ -25,4 +33,5 @@ if __name__ == '__main__':
     ingredients = [ingredient for ingredient, score in scores.items() if score > 0]
     print(ingredients)
     print(get_score(ingredients, persons))
+    write_output(ingredients, input_filename)
 
